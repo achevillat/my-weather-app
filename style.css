@@ -1,0 +1,130 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+h1,
+h2 {
+  font-family: "Ubuntu", sans-serif;
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  font-size: medium;
+  color: #023047;
+  text-align: left;
+}
+p {
+  font-size: 15px;
+}
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+#title {
+  color: #023047;
+  margin: 35px auto 5px;
+}
+.title_search {
+  margin: 100px auto 15px;
+  background: #fff;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #023047;
+  border-radius: 10px;
+}
+.title_search .location_search {
+  padding: 15px 5px;
+}
+.input_location {
+  width: 220px;
+  padding: 5px 5px;
+  border-bottom: 3px solid #023047;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+}
+input::placeholder {
+  color: #000;
+}
+.search_btn {
+  padding: 5px 10px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  border: none;
+  background: #fb8500;
+  width: 220px;
+  font-weight: 500;
+}
+.search_btn:hover {
+  background: #ffb703;
+}
+.current_location {
+  padding: 5px 10px;
+  margin: 0px;
+  border-radius: 5px;
+  border: none;
+  background: #219ebc;
+  width: 220px;
+  font-weight: 500;
+}
+.current_location:hover {
+  background: #8ecae6;
+}
+.current_weather {
+  border: 2px solid #023047;
+  border-radius: 8px;
+  margin: 0px auto;
+  padding: 5px 15px;
+}
+#weather_title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+#city {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: right;
+  margin: 30px 0 0 0;
+  text-transform: capitalize;
+}
+#current_temp {
+  font-size: 50px;
+  font-weight: 300;
+  text-align: center;
+}
+#current-weather {
+  font-size: 70px;
+  text-align: center;
+}
+#current-date {
+  text-align: right;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.card {
+  width: 220px;
+}
+.day {
+  font-size: 20px;
+  font-weight: 400;
+  color: #023047;
+}
+.temp {
+  font-size: 18px;
+  font-weight: 400;
+  color: #023047;
+}
+.weather_icon {
+  font-size: 45px;
+  color: #023047;
+}
+.forecast_block {
+  background: #8ecae6;
+  padding: 10px;
+  border-radius: 6px;
+}
