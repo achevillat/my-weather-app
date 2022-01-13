@@ -15,29 +15,35 @@ currentDate.innerHTML= `${day}, ${date}/${month}/${year}, ${hours}:${minutes} `;
 
 
 // Search engine for city
+
 function updateLocation(response){
   response.preventDefault();
-  let searchedLocation= document.querySelector("#location-input");
+  let cityInputElement= document.querySelector("#location-input");
     let location= document.querySelector("#city");
-    
-if (searchedLocation.value){
-  location.innerHTML = searchedLocation.value;
-  
-    }
+    if (cityInputElement.value){
+  location.innerHTML = cityInputElement.value;
+  search(cityInputElement.value);
+      }
     else{
       alert("Please enter a city")
-    }
-   search("location");
-   
+    }  
+  
+  
 }
-function search(location){
+ 
+function search(city){
 let apiKey = "a435b674eb1340ec80ef66e82aeb341b";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
 axios.get(`${apiUrl}&appid=${apiKey}`).then(displayWeather);
 }
 
+
+
+
 let cityForm=document.querySelector("#location-form");
 cityForm.addEventListener("submit", updateLocation);
+
+
 
 // Display current weather at location entered
 
