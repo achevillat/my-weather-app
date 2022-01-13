@@ -82,5 +82,6 @@ navigator.geolocation.getCurrentPosition(myPosition);
 let button = document.querySelector("#current-button"); 
 button.addEventListener("click", getCurrentPosition);
 
+// Toggle between Celsius and Farenheit
 
 
