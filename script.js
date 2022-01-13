@@ -15,19 +15,24 @@ currentDate.innerHTML= `${day}, ${date}/${month}/${year}, ${hours}:${minutes} `;
 
 
 // Search engine for city
-function updateLocation(event){
-  event.preventDefault();
+function updateLocation(response){
+  response.preventDefault();
   let searchedLocation= document.querySelector("#location-input");
     let location= document.querySelector("#city");
+    
 if (searchedLocation.value){
   location.innerHTML = searchedLocation.value;
+  
     }
     else{
       alert("Please enter a city")
     }
-
-    let apiKey = "a435b674eb1340ec80ef66e82aeb341b";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedLocation.value}&units=metric`;
+   search("location");
+   
+}
+function search(location){
+let apiKey = "a435b674eb1340ec80ef66e82aeb341b";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric`;
 axios.get(`${apiUrl}&appid=${apiKey}`).then(displayWeather);
 }
 
@@ -39,9 +44,10 @@ cityForm.addEventListener("submit", updateLocation);
 function displayWeather(response) {
   //console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
-  console.log(temperature);
+  //console.log(temperature);
+  celsiusTemperature = response.data.main.temp;
   let currentTemp = document.querySelector("#current_temp");
-  currentTemp.innerHTML = `${temperature} °C`;
+  currentTemp.innerHTML = `${temperature}`;
   let wIcon = response.data.weather[0].icon;
   
   let weatherIcon= document.querySelector("#current-icon");
@@ -82,6 +88,38 @@ navigator.geolocation.getCurrentPosition(myPosition);
 let button = document.querySelector("#current-button"); 
 button.addEventListener("click", getCurrentPosition);
 
-// Toggle between Celsius and Farenheit
+// Toggle between Celsius and Farhenheit
 
+function showFarhenheitTemp(event){
+  event.preventDefault();
 
+ let farhenheitTemp= (celsiusTemperature * 9/5) + 32;
+ let temperatureElement= document.querySelector("#current_temp");
+
+ temperatureElement.innerHTML=Math.round(farhenheitTemp);
+  celsiusLink.classList.remove("active");
+  celsiusLink.classList.add("not-active");
+ farhenheitLink.classList.add("active");
+ farhenheitLink.classList.remove("not-active");
+}
+
+function showCelsiusTemp(event){
+  event.preventDefault();
+
+ let temperatureElement= document.querySelector("#current_temp");
+
+ temperatureElement.innerHTML= Math.round(celsiusTemperature);
+ //console.log(temperatureElement);
+   celsiusLink.classList.add("active");
+   celsiusLink.classList.remove("not-active");
+ farhenheitLink.classList.remove("active");
+  farhenheitLink.classList.add("not-active");
+}
+let celsiusTemperature=null;
+let farhenheitLink = document.querySelector("#farhenheit");
+farhenheitLink.addEventListener("click", showFarhenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
+search("Auckland");

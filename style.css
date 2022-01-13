@@ -91,7 +91,8 @@ input::placeholder {
   margin: 30px 0 0 0;
   text-transform: capitalize;
 }
-#current_temp {
+#current_temp,
+#temperature_now {
   font-size: 50px;
   font-weight: 300;
   text-align: center;
@@ -127,4 +128,22 @@ input::placeholder {
   background: #8ecae6;
   padding: 10px;
   border-radius: 6px;
+}
+#celsius {
+  font-size: 38px;
+  text-decoration: none;
+}
+#farhenheit {
+  font-size: 38px;
+  text-decoration: none;
+}
+.active {
+  color: #023047;
+  cursor: default;
+}
+.not-active {
+  cursor: default;
+}
+.active:visited {
+  color: #023047;
 }
