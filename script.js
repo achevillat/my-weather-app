@@ -56,6 +56,9 @@ function displayWeather(response) {
   let wDescription = response.data.weather[0].main;
   let weatherDescription= document.querySelector("#weather-desc");
   weatherDescription.innerHTML = `${wDescription}`;
+  let windS= Math.round(response.data.wind.speed);
+  let windSpeed=document.querySelector("#wind-speed"); 
+  windSpeed.innerHTML=windS;
 }
 
 //Display weather at current location
