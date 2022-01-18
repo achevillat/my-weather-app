@@ -8,7 +8,8 @@ let months=["01","02", "03", "04", "05", "06","07","08","09","10","11","12"];
 let month= months[currentDay.getMonth()];
 let year= currentDay.getFullYear();
 let hours=currentDay.getHours();
-let minutes=currentDay.getMinutes();
+let minutes= String(currentDay.getMinutes()).padStart(2, "0");
+
 let currentDate= document.querySelector("#current-date");
 currentDate.innerHTML= `${day}, ${date}/${month}/${year}, ${hours}:${minutes} `;
 
@@ -43,35 +44,50 @@ axios.get(`${apiUrl}&appid=${apiKey}`).then(displayWeather);
 let cityForm=document.querySelector("#location-form");
 cityForm.addEventListener("submit", updateLocation);
 
-// Display 4 day forecast
+//Format the date coming from API 
 
-function displayForecast(){
-  let forecastElement = document.querySelector("#days-forecast");
-let forecastHTML=`<div class="row forecast_block">`;
-let days=[ "Wed", "Thu", "Fri", "Sat"];
-days.forEach(function(day){ 
-
-forecastHTML=forecastHTML + `
-            <div class="col-sm-2">
-              <div class="card w-100 mx-auto" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                  <li class="day">${day}</li>
-                  <li class="temp">22°C</li>
-                  <li class="weather_icon">
-                    <i class="fas fa-sun"></i>
-                    <br />
-                    <p>Sunny with light breathe</p>
-                  </li>
-                </ul>
-              </div>
-            </div>`;
-             } )
-forecastHTML = forecastHTML + `</div>`;
-forecastElement.innerHTML= forecastHTML;
+function formatForecastDay(timestamp){
+let date = new Date(timestamp * 1000);
+let day = date.getDay();
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+return days[day];
 }
 
 
+// Display 4 day forecast
 
+function displayForecast(response){
+ //console.log(response.data.daily);
+  let forecastData=response.data.daily;
+  let forecastElement = document.querySelector("#days-forecast");
+  let forecastHTML=`<div class="row forecast_block">`;
+
+forecastData.forEach (function (forecastDay, index){ 
+if (index<6){
+forecastHTML = forecastHTML + `
+            <div class="col-sm-2">
+              <div class="card w-100 mx-auto" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="day">${formatForecastDay(forecastDay.dt)}</li>
+                  <li class="temp">${Math.round(forecastDay.temp.day)}°C</li>
+                  <li class="weather_icon">
+                    <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="42"/>
+                    <br />
+                    <p>${forecastDay.weather[0].description}</p>
+                  </li>
+                </ul>
+              </div>
+            </div>`;}
+             })
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML= forecastHTML;
+}
+//Use coordinates to find forecast at location
+function getForecast(coordinates){ 
+let apiKey = "a435b674eb1340ec80ef66e82aeb341b";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 
 
@@ -96,7 +112,8 @@ function displayWeather(response) {
   let windSpeed=document.querySelector("#wind-speed"); 
   windSpeed.innerHTML=windS;
 
-  displayForecast();
+getForecast(response.data.coord);
+
 }
 
 //Display weather at current location

@@ -123,6 +123,7 @@ input::placeholder {
 .weather_icon {
   font-size: 45px;
   color: #023047;
+  text-transform: capitalize;
 }
 .forecast_block {
   background: #8ecae6;
