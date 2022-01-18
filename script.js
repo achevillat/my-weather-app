@@ -43,6 +43,36 @@ axios.get(`${apiUrl}&appid=${apiKey}`).then(displayWeather);
 let cityForm=document.querySelector("#location-form");
 cityForm.addEventListener("submit", updateLocation);
 
+// Display 4 day forecast
+
+function displayForecast(){
+  let forecastElement = document.querySelector("#days-forecast");
+let forecastHTML=`<div class="row forecast_block">`;
+let days=[ "Wed", "Thu", "Fri", "Sat"];
+days.forEach(function(day){ 
+
+forecastHTML=forecastHTML + `
+            <div class="col-sm-2">
+              <div class="card w-100 mx-auto" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="day">${day}</li>
+                  <li class="temp">22°C</li>
+                  <li class="weather_icon">
+                    <i class="fas fa-sun"></i>
+                    <br />
+                    <p>Sunny with light breathe</p>
+                  </li>
+                </ul>
+              </div>
+            </div>`;
+             } )
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML= forecastHTML;
+}
+
+
+
+
 
 
 // Display current weather at location entered
@@ -65,6 +95,8 @@ function displayWeather(response) {
   let windS= Math.round(response.data.wind.speed);
   let windSpeed=document.querySelector("#wind-speed"); 
   windSpeed.innerHTML=windS;
+
+  displayForecast();
 }
 
 //Display weather at current location
