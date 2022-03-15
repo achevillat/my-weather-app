@@ -10,7 +10,7 @@ h1 {
 }
 h2 {
   font-size: medium;
-  color: #023047;
+  color: #295773;
   text-align: left;
 }
 p {
@@ -22,15 +22,15 @@ ul {
 }
 
 #title {
-  color: #023047;
+  color: #fff;
   margin: 35px auto 5px;
 }
 .title_search {
   margin: 100px auto 15px;
-  background: #fff;
+  background: #295773;
   border-style: solid;
   border-width: 2px;
-  border-color: #023047;
+  border-color: #295773;
   border-radius: 10px;
 }
 .title_search .location_search {
@@ -39,41 +39,41 @@ ul {
 .input_location {
   width: 220px;
   padding: 5px 5px;
-  border-bottom: 3px solid #023047;
+  border-bottom: 3px solid #295773;
   border-radius: 5px;
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
 }
 input::placeholder {
-  color: #000;
+  color: #0d0d0d;
 }
 .search_btn {
   padding: 5px 10px;
   margin: 5px 0px;
   border-radius: 5px;
   border: none;
-  background: #fb8500;
+  background: #f2aa6b;
   width: 220px;
   font-weight: 500;
 }
 .search_btn:hover {
-  background: #ffb703;
+  background: #f29f05;
 }
 .current_location {
   padding: 5px 10px;
   margin: 0px;
   border-radius: 5px;
   border: none;
-  background: #219ebc;
+  background: #f26835;
   width: 220px;
   font-weight: 500;
 }
 .current_location:hover {
-  background: #8ecae6;
+  background: #f29f05;
 }
 .current_weather {
-  border: 2px solid #023047;
+  border: 2px solid #295773;
   border-radius: 8px;
   margin: 0px auto;
   padding: 5px 15px;
@@ -113,20 +113,20 @@ input::placeholder {
 .day {
   font-size: 20px;
   font-weight: 400;
-  color: #023047;
+  color: #295773;
 }
 .temp {
   font-size: 18px;
   font-weight: 400;
-  color: #023047;
+  color: #295773;
 }
 .weather_icon {
   font-size: 45px;
-  color: #023047;
+  color: #295773;
   text-transform: capitalize;
 }
 .forecast_block {
-  background: #8ecae6;
+  background: #f2aa6b;
   padding: 10px;
   border-radius: 6px;
 }
@@ -139,12 +139,12 @@ input::placeholder {
   text-decoration: none;
 }
 .active {
-  color: #023047;
+  color: #295773;
   cursor: default;
 }
 .not-active {
   cursor: default;
 }
 .active:visited {
-  color: #023047;
+  color: #295773;
 }

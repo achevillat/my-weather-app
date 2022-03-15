@@ -13,8 +13,6 @@ let minutes= String(currentDay.getMinutes()).padStart(2, "0");
 let currentDate= document.querySelector("#current-date");
 currentDate.innerHTML= `${day}, ${date}/${month}/${year}, ${hours}:${minutes} `;
 
-
-
 // Search engine for city
 
 function updateLocation(response){
@@ -28,8 +26,7 @@ function updateLocation(response){
     else{
       alert("Please enter a city")
     }  
-  
-  
+   
 }
  
 function search(city){
@@ -37,9 +34,6 @@ let apiKey = "a435b674eb1340ec80ef66e82aeb341b";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
 axios.get(`${apiUrl}&appid=${apiKey}`).then(displayWeather);
 }
-
-
-
 
 let cityForm=document.querySelector("#location-form");
 cityForm.addEventListener("submit", updateLocation);
@@ -52,7 +46,6 @@ let day = date.getDay();
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 return days[day];
 }
-
 
 // Display 4 day forecast
 
